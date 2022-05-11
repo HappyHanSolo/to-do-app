@@ -61,7 +61,26 @@ const listElements = document.querySelector('li');
 
 // in order to attach a click event listener to the lis whcih do not exist on the page yet, we can use :
 //EVENT PROPAGATION to DELEGATE the click event to the ul!
+const ul = document.querySelector('ul');
 
+ul.addEventListener('click', function(e) {
+// the this keyword represents the object which ones the code which is currently running
+// so this will give us back the ul consistently which is not what we want 
+//    console.log(this);
+    console.log(e);
+    // as long as we've clicked on the icon, then:
+    // toggle between checked/unchecked (AKA done vs not done)
+
+    if (e.target.localName === 'i') {
+        console.log('Checkbox was clicked');
+
+        // toggele between checked/unchcked (AKA done vs not done) on the target element:
+        e.target.classList.toggle('fa-square-check');
+        e.target.classList.toggle('fa-square');
+
+    }
+
+});
 
 // Bonus Level
 // add a "Reset" button which clears all of the TO DOs
